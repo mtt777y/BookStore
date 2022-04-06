@@ -18,6 +18,7 @@ namespace BookStore.Controllers
         public WeatherForecastController(ILogger logger)
         {
             _logger = logger;
+            _logger.Info("Test controller has started!");
         }
 
         [HttpGet]

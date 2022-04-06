@@ -59,7 +59,7 @@ namespace BookStore.Controllers
         private ClaimsIdentity GetIdentity(string username, string password)
         {
             //User person = DbSet<User>.FirstOrDefault(x => x.Email == username && x.Password == password);
-            List<User> persons = _context.Users.Where(x => x.Name == username && x.Password == password).ToList();
+            List<User> persons = _context.Set<User>().Include(f => f.Role).Where(x => x.Name == username && x.Password == password).ToList();
 
             if (persons.Count() > 0)
             {

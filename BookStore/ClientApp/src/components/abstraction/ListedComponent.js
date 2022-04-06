@@ -28,7 +28,6 @@ export class ListedComponent extends Component {
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        {this.additionalFields.map(f => <th>{f}</th>)}
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +35,6 @@ export class ListedComponent extends Component {
                         <tr key={Data.id}>
                             <td>{Data.id}</td>
                             <td>{Data.name}</td>
-                            {this.additionalFields.map(f => <td>{Data.name}</td>)}
                         </tr>
                     )}
                 </tbody>

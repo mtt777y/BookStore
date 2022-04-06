@@ -21,14 +21,6 @@ export class ObjectComponent extends Component {
                 <p>
                     <input type="text" name="name" value={this.entityName} onChange={(event) => this.entityName = event.target.value}/>
                 </p>
-                {this.parent.additionalFields.map(f => 
-                <div>
-                        <em>{f}</em>
-                <p>
-                        <input type="text" name={f} onChange={(event) => this[f] = event.target.value}/>
-                </p>
-                </div>
-                )}
                 <p>
                     <button onClick = {this.SaveEntity}>
                         Cохранить

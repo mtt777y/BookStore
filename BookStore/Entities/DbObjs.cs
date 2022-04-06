@@ -38,10 +38,8 @@ namespace BookStore.Entities
         public virtual ICollection<Order>? Orders { get; set; }
     }
 
-    public class Order
+    public class Order : DbObjs
     {
-        public int Id { get; set; }
-
         public DateTime? OrderDate { get; set; }
 
         public User? User { get; set; }

@@ -14,6 +14,7 @@ using ILogger = NLog.ILogger;
 
 namespace BookStore.Controllers
 {
+    [Authorize]
     public class OrdersController : AbstractController<Order>
     {
         public OrdersController(DbSets dbSets, ILogger logger) : base(dbSets, logger)

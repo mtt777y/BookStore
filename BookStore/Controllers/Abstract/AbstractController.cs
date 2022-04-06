@@ -14,6 +14,7 @@ namespace BookStore.Controllers.Abstract
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AbstractController<T> : ControllerBase where T : DbObjs, new()
     {
         protected DbSets _context;
@@ -23,7 +24,7 @@ namespace BookStore.Controllers.Abstract
         {
             _context = dbSets;
             _logger = logger;
-            _logger.Trace("Controller running....");
+            _logger.Info("Controller running....");
         }
 
         // GET: api/....

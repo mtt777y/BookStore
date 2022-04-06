@@ -11,9 +11,14 @@ namespace BookStore
 {
     public class DbSets : DbContext
     {
+        public DbSet<User>? Users { get; set; }
+        public DbSet<Book>? Books { get; set; }
+        public DbSet<Order>? Orders { get; set; }
+        //public DbSet<BooksOfOrder>? BooksOfOrders { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder contextOptionsBuilder)
         {
-            contextOptionsBuilder.UseSqlServer("Server=MSI\\SQLEXPRESS;DataBase = Dogs; User ID=sa;Password=sa;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            contextOptionsBuilder.UseSqlServer("Server=MSI\\SQLEXPRESS;DataBase = BookStore; User ID=sa;Password=sa;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             //base.OnConfiguring(contextOptionsBuilder);
         }
 
@@ -23,6 +28,10 @@ namespace BookStore
             //modelBuilder.Entity<Word>().HasIndex(u => u.Value).IsUnique();
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>().HasIndex(u => u.Name).IsUnique();
+            modelBuilder.Entity<Book>().HasIndex(u => u.ISBN).IsUnique();
+            modelBuilder.Entity<Book>().HasIndex(u => u.Name).IsUnique();
         }
     }
 }

@@ -87,6 +87,7 @@ namespace BookStore.Controllers
             return "Hello World!";
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult<object>> PostUser([FromBody] incData data)
         {
@@ -99,6 +100,7 @@ namespace BookStore.Controllers
             return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetEntities()
         {

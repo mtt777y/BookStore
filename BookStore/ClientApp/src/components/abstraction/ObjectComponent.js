@@ -33,18 +33,24 @@ export class ObjectComponent extends Component {
         return (this.entityName)
     }
 
+    static getRequest(postedContent) {
+        return (
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + App.token
+                },
+                body: JSON.stringify(postedContent)
+            }
+        );
+    }
+
     async SaveEntity() {
         let postedContent = this.getContent();
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + App.token
-            },
-            body: JSON.stringify(postedContent)
-        };
+        const requestOptions = ObjectComponent.getRequest(postedContent);
 
         const response = await fetch('api/' + this.baseController, requestOptions);
         const data = await response.json();

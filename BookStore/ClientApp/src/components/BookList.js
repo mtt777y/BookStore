@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListedComponent } from './abstraction/ListedComponent'
 import { BookObject } from './BookObject'
+import { BookEntity } from './BookEntity'
 
 export class BookList extends ListedComponent {
     constructor(prop, controller) {
@@ -13,24 +14,9 @@ export class BookList extends ListedComponent {
 
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>ISBN</th>
-                        <th>Genre</th>
-                        <th>Author</th>
-                    </tr>
-                </thead>
                 <tbody>
-                    {tableData.map(Data =>
-                        <tr key={Data.id}>
-                            <td>{Data.id}</td>
-                            <td>{Data.name}</td>
-                            <td>{Data.isbn}</td>
-                            <td>{Data.genre}</td>
-                            <td>{Data.author}</td>
-                        </tr>
+                    {tableData.map(data =>
+                        <BookEntity data={data} />
                     )}
                 </tbody>
             </table>

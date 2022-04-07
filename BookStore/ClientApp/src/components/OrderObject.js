@@ -61,7 +61,7 @@ export class OrderObject extends ObjectComponent {
     }
 }
 
-class OrderData {
+export class OrderData {
     books;
     username;
 }

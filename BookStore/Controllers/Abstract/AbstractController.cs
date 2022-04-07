@@ -14,7 +14,7 @@ namespace BookStore.Controllers.Abstract
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "admin")]
+    [Authorize]
     public class AbstractController<T> : ControllerBase where T : DbObjs, new()
     {
         protected DbSets _context;

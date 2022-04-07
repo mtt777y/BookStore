@@ -14,13 +14,14 @@ using ILogger = NLog.ILogger;
 
 namespace BookStore.Controllers
 {
-    [Authorize]
+    
     public class BooksController : AbstractController<Book>
     {
         public BooksController(DbSets dbSets, ILogger logger) : base(dbSets, logger)
         {
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult<object>> PostBook([FromBody] BookData data)
         {

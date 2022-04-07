@@ -3,6 +3,7 @@ import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLi
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import App from '../App';
+import Cart from './Cart';
 
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
@@ -30,20 +31,30 @@ export class NavMenu extends Component {
     render() {
         let content;
         if (this.state.LoginSuccess) {
+            let adminconent;
+            let adminconent2;
+
+            if (App.thisRole == 'admin') {
+                adminconent =
+                    <NavItem>
+                        <NavLink tag={Link} className="text-dark" to="/order-list">List of orders</NavLink>
+                    </NavItem>;
+                adminconent2 = 
+                    <NavItem>
+                        <NavLink tag={Link} className="text-dark" to="/user-list">List of users</NavLink>
+                    </NavItem>
+            }
             content =
                 <ul className="navbar-nav flex-grow">
                     <NavItem>
                         <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink tag={Link} className="text-dark" to="/user-list">List of users</NavLink>
-                    </NavItem>
-                    <NavItem>
                         <NavLink tag={Link} className="text-dark" to="/book-list">List of books</NavLink>
                     </NavItem>
-                    <NavItem>
-                        <NavLink tag={Link} className="text-dark" to="/order-list">List of orders</NavLink>
-                    </NavItem>
+                {adminconent}
+                {adminconent2}
+                <Cart />
                 </ul>
 
         }

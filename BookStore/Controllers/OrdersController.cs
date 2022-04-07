@@ -21,6 +21,7 @@ namespace BookStore.Controllers
         {
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetEntities()
         {

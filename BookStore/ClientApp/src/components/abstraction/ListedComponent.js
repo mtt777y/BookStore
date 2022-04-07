@@ -60,12 +60,16 @@ export class ListedComponent extends Component {
             ? <p><em>Loading...</em></p>
             : this.renderTable();
 
-        let objContent = this.state.objEditorOpen
-            ?
-            this.renderObject()
-            : <button onClick={this.AddNew}>
-                Add new element
-              </button>;
+        let objContent;
+        if (App.thisRole == 'admin') {
+            objContent = this.state.objEditorOpen
+                ?
+                this.renderObject()
+                : <button onClick={this.AddNew}>
+                    Add new element
+                </button>;
+        }
+
 
         return (
             <div>

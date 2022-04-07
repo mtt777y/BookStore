@@ -104,6 +104,19 @@ namespace BookStore.Controllers
         {
             return await _context.Set<User>().Include(c => c.Role).ToListAsync();
         }
+
+        [AllowAnonymous]
+        [HttpPost("/regist")]
+        public async Task<ActionResult<object>> RegistUser([FromBody] LoginPass loginPass)
+        {
+
+            User entity = new() { Name = loginPass.Login, Password = loginPass.Pass, Role = _context.Set<Role>().Where(r => r.Name == "user").FirstOrDefault() };
+
+            _context.Set<User>().Add(entity);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
+        }
     }
 
     public class incData

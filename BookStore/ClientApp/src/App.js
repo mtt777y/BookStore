@@ -6,6 +6,7 @@ import { BookList } from './components/BookList';
 import { UserList } from './components/UserList';
 import { OrderList } from './components/OrderList';
 import { Autorization } from './components/Autorization';
+import { Registration } from './components/Registration';
 
 import './custom.css'
 
@@ -24,6 +25,7 @@ export default class App extends Component {
                 <Route path='/book-list' component={BookList} />
                 <Route path='/order-list' component={OrderList} />
                 <Route path='/loginpage' component={Autorization} />
+                <Route path='/register' component={Registration} />
             </Layout>
         );
     }

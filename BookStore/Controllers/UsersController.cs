@@ -49,7 +49,8 @@ namespace BookStore.Controllers
             var response = new
             {
                 access_token = encodedJwt,
-                username = identity.Name
+                username = identity.Name,
+                userrole = identity.Claims.ToArray()[1].Value
             };
 
             //return JsonConvert.SerializeObject(response);
@@ -87,7 +88,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser([FromBody] incData data)
+        public async Task<ActionResult<object>> PostUser([FromBody] incData data)
         {
 
             User entity = new() { Name = data.EntityName, Password = data.UserPass, Role = _context.Set<Role>().Where(r => r.Name == data.UserRole).FirstOrDefault() };
@@ -96,6 +97,12 @@ namespace BookStore.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetEntities()
+        {
+            return await _context.Set<User>().Include(c => c.Role).ToListAsync();
         }
     }
 

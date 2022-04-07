@@ -15,7 +15,7 @@ export class Home extends Component {
             content =
                 <div>
                 <p><em>Sign in</em></p>
-                    <p><NavLink tag={Link} className="text-dark" to="/loginpage">Перейдите на страницу ввода логина и пароля</NavLink></p>
+                    <p><NavLink tag={Link} className="text-dark" to="/loginpage">Go to sign in!</NavLink></p>
                 </div>
         }
         return (

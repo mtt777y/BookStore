@@ -28,6 +28,8 @@ export class Autorization extends Component {
         const data = await response.json();
         if (response.status == 200) {
             App.token = data.access_token;
+            App.thisUser = data.username;
+            App.thisRole = data.userrole;
             this.setState({ LoginError: false, LoginSuccess: true });
             App.thisNav.setState({ LoginSuccess: true });
         }

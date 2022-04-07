@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListedComponent } from './abstraction/ListedComponent'
+import { BookObject } from './BookObject'
 
 export class BookList extends ListedComponent {
     constructor(prop, controller) {
@@ -33,6 +34,19 @@ export class BookList extends ListedComponent {
                     )}
                 </tbody>
             </table>
+        );
+    }
+
+    renderObject() {
+        return (
+            <div>
+                <p><BookObject controller={this.baseController} parent={this} /></p>
+                <p>
+                    <button onClick={this.CancelNew}>
+                        Cancel
+                    </button>
+                </p>
+            </div>
         );
     }
 }

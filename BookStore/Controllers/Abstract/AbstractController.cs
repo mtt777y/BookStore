@@ -28,11 +28,11 @@ namespace BookStore.Controllers.Abstract
         }
 
         // GET: api/....
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<T>>> GetEntities()
-        {
-            return await _context.Set<T>().ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<T>>> GetEntities()
+        //{
+        //    return await _context.Set<T>().ToListAsync();
+        //}
 
         // GET: api/..../5
         [HttpGet("{id}")]

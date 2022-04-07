@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListedComponent } from './abstraction/ListedComponent'
+import { OrderObject } from './OrderObject'
 
 export class OrderList extends ListedComponent {
     constructor(prop, controller) {
@@ -24,13 +25,26 @@ export class OrderList extends ListedComponent {
                     {tableData.map(Data =>
                         <tr key={Data.id}>
                             <td>{Data.id}</td>
-                            <td>{Data.orderdate}</td>
+                            <td>{Data.orderDate}</td>
                             <td>{Data.user.name}</td>
-                            <td>{Data.bookcount}</td>
+                            <td>{Data.count}</td>
                         </tr>
                     )}
                 </tbody>
             </table>
+        );
+    }
+
+    renderObject() {
+        return (
+            <div>
+                <p><OrderObject controller={this.baseController} parent={this} /></p>
+                <p>
+                    <button onClick={this.CancelNew}>
+                        Cancel
+                    </button>
+                </p>
+            </div>
         );
     }
 }

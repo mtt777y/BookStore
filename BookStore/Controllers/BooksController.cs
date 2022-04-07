@@ -20,5 +20,31 @@ namespace BookStore.Controllers
         public BooksController(DbSets dbSets, ILogger logger) : base(dbSets, logger)
         {
         }
+
+        [HttpPost]
+        public async Task<ActionResult<object>> PostBook([FromBody] BookData data)
+        {
+
+            Book entity = new() { Name = data.EntityName, Genre = data.BookGenre, Author = data.BookAuthor, ISBN = data.BookISBN };
+
+            _context.Set<Book>().Add(entity);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Book>>> GetEntities()
+        {
+            return await _context.Set<Book>().ToListAsync();
+        }
+    }
+
+    public class BookData
+    {
+        public string EntityName { get; set; }
+        public string BookGenre { get; set; }
+        public string BookAuthor { get; set; }
+        public string BookISBN { get; set; }
     }
 }

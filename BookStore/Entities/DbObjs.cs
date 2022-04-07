@@ -30,7 +30,6 @@ namespace BookStore.Entities
 
     public class Book : DbObjs
     {
-        public string? Password { get; set; }
         public string? ISBN { get; set; }
         public string? Author { get; set; }
         public string? Genre { get; set; }

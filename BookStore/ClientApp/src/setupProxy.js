@@ -9,7 +9,7 @@ const context =  [
     "/token",
     "/hello",
     "/helloguys",
-    "/api/users"
+    "/api/"
 ];
 
 module.exports = function(app) {

@@ -9,12 +9,12 @@ export class Home extends Component {
     render() {
         let content;
         if (App.token != undefined) {
-            content = <p><em>Вы залогинены!</em></p>
+            content = <p><em>You have already signed in!</em></p>
         }
         else {
             content =
                 <div>
-                    <p><em>Авторизуйтесь</em></p>
+                <p><em>Sign in</em></p>
                     <p><NavLink tag={Link} className="text-dark" to="/loginpage">Перейдите на страницу ввода логина и пароля</NavLink></p>
                 </div>
         }

@@ -42,6 +42,18 @@ export class ListedComponent extends Component {
         );
     }
 
+    renderObject() {
+        return (
+            <div>
+                <p><ObjectComponent controller={this.baseController} parent={this} /></p>
+                <p>
+                    <button onClick={this.CancelNew}>
+                        Calcel
+                    </button>
+                </p>
+            </div>
+        );
+    }
 
     render() {
         let contents = this.state.loading
@@ -50,14 +62,7 @@ export class ListedComponent extends Component {
 
         let objContent = this.state.objEditorOpen
             ?
-            <div>
-                <p><ObjectComponent controller={this.baseController} parent={this}/></p>
-                <p>
-                    <button onClick={this.CancelNew}>
-                       Отменить
-                    </button>
-                </p>
-            </div>
+            this.renderObject()
             : <button onClick={this.AddNew}>
                 Add new element
               </button>;

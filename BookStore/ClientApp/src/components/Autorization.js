@@ -45,19 +45,19 @@ export class Autorization extends Component {
         }
         else {
             contents = this.state.LoginError
-                ? <p><em>Ошибка при вводе логина и пароля!</em></p>
-                : <p><em>Введите логин и пароль...</em></p>;
+                ? <p><em>Error!</em></p>
+                : <p><em>Enter login and password...</em></p>;
         }
 
         return (
             <div>
                 {contents}
                 <p>
-                    <em>Логин:</em>
+                    <em>Login:</em>
                     <input type="text" name="login" onChange={(event) => this.lp.Login = event.target.value}/>
                 </p>
                 <p>
-                    <em>Пароль:</em>
+                    <em>Password:</em>
                     <input type="password" name="pass" onChange={(event) => this.lp.Pass = event.target.value}/>
                 </p>
                 <p>

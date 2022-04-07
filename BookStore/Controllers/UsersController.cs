@@ -85,5 +85,26 @@ namespace BookStore.Controllers
         {
             return "Hello World!";
         }
+
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser([FromBody] incData data)
+        {
+
+            User entity = new() { Name = data.EntityName, Password = data.UserPass, Role = _context.Set<Role>().Where(r => r.Name == data.UserRole).FirstOrDefault() };
+
+            _context.Set<User>().Add(entity);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
+        }
+    }
+
+    public class incData
+    {
+        public string EntityName { get; set; }
+
+        public string UserPass { get; set; }
+
+        public string UserRole { get; set; }
     }
 }

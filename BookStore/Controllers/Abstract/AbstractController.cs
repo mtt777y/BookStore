@@ -14,7 +14,7 @@ namespace BookStore.Controllers.Abstract
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class AbstractController<T> : ControllerBase where T : DbObjs, new()
     {
         protected DbSets _context;
@@ -50,17 +50,17 @@ namespace BookStore.Controllers.Abstract
 
         // POST: api/Countries
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<T>> PostCountry([FromBody] string entityName)
-        {
+        //[HttpPost]
+        //public async Task<ActionResult<T>> PostCountry([FromBody] string entityName)
+        //{
 
-            T entity = new T() { Name = entityName };
+        //    T entity = new T() { Name = entityName };
 
-            _context.Set<T>().Add(entity);
-            await _context.SaveChangesAsync();
+        //    _context.Set<T>().Add(entity);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
-        }
+        //    return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
+        //}
 
         // DELETE: api/Countries/5
         [HttpDelete("{id}")]

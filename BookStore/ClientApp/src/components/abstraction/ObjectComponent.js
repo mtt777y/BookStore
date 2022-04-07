@@ -23,13 +23,19 @@ export class ObjectComponent extends Component {
                 </p>
                 <p>
                     <button onClick = {this.SaveEntity}>
-                        Cохранить
+                        Save
                     </button>
                 </p>
             </div>)
     }
 
+    getContent() {
+        return (this.entityName)
+    }
+
     async SaveEntity() {
+        let postedContent = this.getContent();
+
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -37,7 +43,7 @@ export class ObjectComponent extends Component {
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' + App.token
             },
-            body: JSON.stringify(this.entityName)
+            body: JSON.stringify(postedContent)
         };
 
         const response = await fetch('api/' + this.baseController, requestOptions);

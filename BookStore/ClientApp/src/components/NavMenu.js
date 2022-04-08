@@ -31,14 +31,9 @@ export class NavMenu extends Component {
     render() {
         let content;
         if (this.state.LoginSuccess) {
-            let adminconent;
             let adminconent2;
 
             if (App.thisRole == 'admin') {
-                adminconent =
-                    <NavItem>
-                        <NavLink tag={Link} className="text-dark" to="/order-list">List of orders</NavLink>
-                    </NavItem>;
                 adminconent2 = 
                     <NavItem>
                         <NavLink tag={Link} className="text-dark" to="/user-list">List of users</NavLink>
@@ -52,7 +47,9 @@ export class NavMenu extends Component {
                     <NavItem>
                         <NavLink tag={Link} className="text-dark" to="/book-list">List of books</NavLink>
                     </NavItem>
-                {adminconent}
+                    <NavItem>
+                        <NavLink tag={Link} className="text-dark" to="/order-list">List of orders</NavLink>
+                    </NavItem>
                 {adminconent2}
                 <Cart />
                 </ul>

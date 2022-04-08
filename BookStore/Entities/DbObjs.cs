@@ -43,15 +43,15 @@ namespace BookStore.Entities
 
         public User? User { get; set; }
 
+        public string Status { get; set; }
+
         public virtual ICollection<Book>? Books { get; set; }
     }
 
-    //public class BooksOfOrder
-    //{
-    //    public int Id { get; set; }
+    public class StorageData : DbObjs
+    {
+        public int? Qty { get; set; }
 
-    //    public Order? BookId { get; set; }
-
-    //    public Book? OrderId { get; set; }
-    //}
+        public Book? Book { get; set; }
+    }
 }

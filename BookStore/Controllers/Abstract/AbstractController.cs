@@ -27,13 +27,6 @@ namespace BookStore.Controllers.Abstract
             _logger.Info("Controller running....");
         }
 
-        // GET: api/....
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<T>>> GetEntities()
-        //{
-        //    return await _context.Set<T>().ToListAsync();
-        //}
-
         // GET: api/..../5
         [HttpGet("{id}")]
         public async Task<ActionResult<T>> GetEntity(int id)
@@ -47,20 +40,6 @@ namespace BookStore.Controllers.Abstract
 
             return entity;
         }
-
-        // POST: api/Countries
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<T>> PostCountry([FromBody] string entityName)
-        //{
-
-        //    T entity = new T() { Name = entityName };
-
-        //    _context.Set<T>().Add(entity);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetEntity", new { id = entity.Id }, entity);
-        //}
 
         // DELETE: api/Countries/5
         [HttpDelete("{id}")]

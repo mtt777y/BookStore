@@ -88,8 +88,16 @@ export class ListedComponent extends Component {
                 'Authorization': 'Bearer ' + App.token
             }
         };
+        let response;
+        if (App.thisRole == 'user' && this.baseController == 'orders') {
+            response = await fetch('api/' + this.baseController + '/onlymy/?username=' + App.thisUser, requestOptions);
+        }
+        //else if (App.thisRole == 'admin' && this.baseController == 'orders'){
 
-        const response = await fetch('api/' + this.baseController, requestOptions);
+        //}
+        else {
+            response = await fetch('api/' + this.baseController, requestOptions);
+        }       
         const data = await response.json();
         if (response.status == 200) {
             this.setState({ tableData: data, loading: false });

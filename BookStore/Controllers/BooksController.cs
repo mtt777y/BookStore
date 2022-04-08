@@ -39,6 +39,23 @@ namespace BookStore.Controllers
         {
             return await _context.Set<Book>().ToListAsync();
         }
+
+        [HttpGet("sortbypopularity")]
+        public async Task<ActionResult<IEnumerable<object>>> GetEntitiesSort()
+        {
+            return await _context.Set<Book>().Include(b => b.Orders).Select(b => new { b.ISBN, b.Author, b.Id, b.Genre, Count = b.Orders == null ? 0 : b.Orders.Count }).OrderBy(x => x.Count).ToListAsync();
+        }
+
+        [HttpGet("details")]
+        public IEnumerable<Book> GetEntities(string Author, string ISBN, string Genre, string Name)
+        {
+            Func<Book, bool> predicate = book => (ISBN == "" || book.ISBN == ISBN) 
+                                                && (Name == "" || book.Name == Name)
+                                                && (Genre == "" || book.Genre == Genre) 
+                                                && (Author == "" || book.Author == Author);
+            //return await _context.Set<Book>().Where(predicate).ToListAsync();
+            return _context.Set<Book>().Where(predicate).ToList();
+        }
     }
 
     public class BookData
